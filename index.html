@@ -242,6 +242,31 @@ section{padding-block:110px;position:relative}
 .trick .ghost{background:transparent;border:1px solid var(--gold);color:var(--gold2)}
 .trick .ghost::after{display:none}
 .trick small{display:block;color:var(--sub);font-size:12px;margin-top:20px}
+.row-cards{max-width:740px;margin-left:auto;margin-right:auto}
+.row-cards{align-items:flex-start;align-content:center}
+.row-cards.many{--cw:clamp(54px,8.6vw,78px);--gp:clamp(6px,1.6vw,16px);gap:var(--gp);max-width:calc(var(--cw)*8 + var(--gp)*7 + 2px)}
+.row-cards.many .pk{width:var(--cw);font-size:clamp(20px,3vw,28px)}
+@media (max-width:640px){.row-cards.many{--cw:64px;--gp:8px;max-width:calc(var(--cw)*4 + var(--gp)*3 + 2px)}}
+.row-cards.many .pk i{font-size:10.5px}
+.prog{display:flex;justify-content:center;gap:8px;margin-top:14px;min-height:10px}
+.prog i{width:28px;height:3px;background:rgba(233,210,156,.22);transition:background .4s}
+.prog i.on{background:var(--gold)}
+.reveal{perspective:1200px;width:clamp(120px,22vw,160px);aspect-ratio:5/7;margin:0 auto;position:relative}
+.reveal .rin{position:absolute;inset:0;transform-style:preserve-3d;transition:transform 1.2s cubic-bezier(.3,.7,.2,1)}
+.reveal.open .rin{transform:rotateY(180deg)}
+.reveal .rb,.reveal .rf{position:absolute;inset:0;border-radius:12px;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 18px 40px rgba(0,0,0,.55)}
+.reveal .rb{background:repeating-linear-gradient(45deg,#6E1422 0 8px,#86192B 8px 16px);border:8px solid var(--paper)}
+.reveal .rb::after{content:"";position:absolute;inset:6px;border:1px solid rgba(233,210,156,.75);border-radius:4px}
+.reveal .rf{transform:rotateY(180deg);background:var(--paper);color:#1A1A1A;display:grid;place-items:center;font-family:var(--f-deco);font-weight:700;font-size:clamp(44px,8vw,60px)}
+.reveal .rf.r{color:var(--red)}
+.reveal .rf em{font-style:normal;display:grid;justify-items:center;line-height:1}
+.reveal .rf em u{text-decoration:none;font-size:.7em;margin-top:6px}
+.reveal .rf i{position:absolute;left:10px;top:8px;font-style:normal;font-size:16px;line-height:1.1;text-align:center}
+.reveal.wobble .rin{animation:wob 1.4s ease-in-out}
+@keyframes wob{25%{transform:rotate(-3deg) translateY(-4px)}50%{transform:rotate(3deg)}75%{transform:rotate(-2deg) translateY(-2px)}}
+.reveal.open::before{content:"";position:absolute;inset:-40%;background:radial-gradient(circle,rgba(233,210,156,.45),transparent 60%);animation:glow 1.6s ease-out .5s both;z-index:-1}
+@keyframes glow{from{opacity:0;transform:scale(.4)}40%{opacity:1}to{opacity:.35;transform:scale(1)}}
+@media (max-width:560px){.trick{padding:34px 14px 30px}}
 
 /* ---------- plans ---------- */
 .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:64px}
@@ -499,14 +524,12 @@ footer{border-top:1px solid var(--rule);padding-block:48px 36px;font-size:12.5px
 <section class="alt" id="try">
   <div class="wrap">
     <div class="head rv"><p class="en notranslate" translate="no">BEFORE THE SHOW</p><h2>まずは、ひとつ</h2><span class="orn" aria-hidden="true">♥</span>
-      <p class="sub">開演前のごあいさつに、画面の上で小さなマジックをどうぞ。</p></div>
+      <p class="sub">開演前のごあいさつに、画面越しの読心術をひとつ。16枚から心の中で選んだ1枚を、4つの質問だけで当ててみせます。</p></div>
     <div class="trick rv">
-      <p class="step" id="tstep">6枚のうち、1枚を心の中で選んでください。<br>指をささず、口にも出さずに。</p>
-      <div class="row-cards notranslate" translate="no" id="trow" aria-live="polite"></div>
-      <div class="btns">
-        <button class="btn" type="button" id="tgo">覚えました</button>
-        <button class="btn ghost" type="button" id="tagain" hidden>もう一度</button>
-      </div>
+      <p class="step" id="tstep" aria-live="polite"></p>
+      <div class="prog" id="tprog" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="row-cards notranslate" translate="no" id="trow"></div>
+      <div class="btns" id="tbtns"></div>
       <small>本番の MAGIC NIGHT は、画面ではなくあなたの目の前で起こります。</small>
     </div>
   </div>
@@ -721,25 +744,65 @@ footer{border-top:1px solid var(--rule);padding-block:48px 36px;font-size:12.5px
     once.observe(bc);
   }
 
-  // the little trick: six court cards, then five that are all different — the chosen one is "gone"
-  var A=[['K','♠'],['Q','♥'],['J','♣'],['K','♦'],['Q','♣'],['J','♥']];
-  var B=[['K','♣'],['Q','♦'],['J','♠'],['K','♥'],['Q','♠']];
-  var row=document.getElementById('trow'),st=document.getElementById('tstep'),go=document.getElementById('tgo'),ag=document.getElementById('tagain');
-  function deal(set){
-    row.innerHTML='';
-    set.forEach(function(c,i){
-      var d=document.createElement('div');d.className='pk hide'+(c[1]==='♥'||c[1]==='♦'?' r':'');
+  // mind reading: 16 cards, 4 yes/no questions. Card k is shown in round n when bit n of k is set,
+  // so the four answers spell out k in binary. Each round's 8 cards are shuffled to hide the pattern.
+  var DECK=[['A','♠'],['9','♥'],['Q','♣'],['A','♦'],['J','♦'],['2','♣'],['K','♥'],['10','♠'],['5','♠'],['J','♥'],['8','♣'],['4','♦'],['7','♦'],['K','♣'],['3','♥'],['Q','♠']]; // arranged so every question shows a balanced mix of colours, suits and court cards
+  var SUIT={'♠':'スペード','♥':'ハート','♦':'ダイヤ','♣':'クラブ'};
+  var row=document.getElementById('trow'),st=document.getElementById('tstep'),bt=document.getElementById('tbtns'),pg=[].slice.call(document.querySelectorAll('#tprog i'));
+  var order,round,code,timers=[];
+  function later(fn,ms){timers.push(setTimeout(fn,ms))}
+  function clear(){timers.forEach(clearTimeout);timers=[]}
+  function red(c){return c[1]==='♥'||c[1]==='♦'}
+  function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+  function deal(ids){
+    row.innerHTML='';row.className='row-cards notranslate many';
+    ids.forEach(function(k,i){
+      var c=DECK[k],d=document.createElement('div');d.className='pk hide'+(red(c)?' r':'');
+      d.setAttribute('aria-label',SUIT[c[1]]+'の'+c[0]);
       d.innerHTML='<i>'+c[0]+'<br>'+c[1]+'</i><em>'+c[0]+'<u>'+c[1]+'</u></em>';
-      row.appendChild(d);setTimeout(function(){d.classList.remove('hide')},80+i*90);
+      row.appendChild(d);later(function(){d.classList.remove('hide')},60+i*45);
     });
   }
-  function start(){deal(A);st.innerHTML='6枚のうち、1枚を心の中で選んでください。<br>指をささず、口にも出さずに。';go.hidden=false;ag.hidden=true;}
-  go.addEventListener('click',function(){
-    [].forEach.call(row.children,function(d){d.classList.add('hide')});
-    st.textContent='……';go.hidden=true;
-    setTimeout(function(){deal(B);st.innerHTML='あなたのカードだけを、消しました。<br>残りは5枚です。';ag.hidden=false;},900);
-  });
-  ag.addEventListener('click',start);
+  function buttons(list){
+    bt.innerHTML='';
+    list.forEach(function(b){var x=document.createElement('button');x.type='button';x.className='btn'+(b[2]?' ghost':'');x.textContent=b[0];x.addEventListener('click',b[1]);bt.appendChild(x);});
+  }
+  function hideAll(then){[].forEach.call(row.children,function(d){d.classList.add('hide')});bt.innerHTML='';later(then,550)}
+  function progress(n){pg.forEach(function(p,i){p.classList.toggle('on',i<n)})}
+  function start(){
+    clear();round=0;code=0;progress(0);
+    st.innerHTML='16枚の中から、1枚だけを心の中で選んでください。<br>指をささず、口にも出さずに。';
+    deal(shuffle(DECK.map(function(_,k){return k})));
+    row.style.minHeight='';later(function(){row.style.minHeight=row.offsetHeight+'px'},30);
+    buttons([['覚えました',function(){hideAll(ask)}]]);
+  }
+  function ask(){
+    var ids=[];for(var k=0;k<16;k++)if(k>>round&1)ids.push(k);
+    progress(round);
+    st.innerHTML='質問 '+(round+1)+' / 4<br>この8枚の中に、あなたのカードはありますか？';
+    deal(shuffle(ids));
+    buttons([['あります',function(){answer(1)}],['ありません',function(){answer(0)},1]]);
+  }
+  function answer(yes){
+    if(yes)code|=1<<round;
+    round++;progress(round);
+    hideAll(round<4?ask:reveal);
+  }
+  function reveal(){
+    var c=DECK[code];
+    row.className='row-cards notranslate';
+    row.innerHTML='<div class="reveal wobble" id="rv"><div class="rin"><div class="rb"></div><div class="rf'+(red(c)?' r':'')+'"><i>'+c[0]+'<br>'+c[1]+'</i><em>'+c[0]+'<u>'+c[1]+'</u></em></div></div></div>';
+    st.innerHTML='あなたのカードを、思い浮かべ続けてください……';
+    later(function(){st.innerHTML='……見えてきました。';},1500);
+    later(function(){
+      document.getElementById('rv').classList.remove('wobble');
+      document.getElementById('rv').classList.add('open');
+    },2600);
+    later(function(){
+      st.innerHTML='あなたが選んだのは、<br>'+SUIT[c[1]]+'の'+c[0]+' ですね。';
+      buttons([['もう一度',start,1]]);
+    },3600);
+  }
   start();
 
   // reveal on scroll
