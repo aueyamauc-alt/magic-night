@@ -11,7 +11,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="robots" content="noindex">
 <meta name="google" content="notranslate">
-<meta name="description" content="Mr.マリック presents MAGICIAN’S NIGHT。Mr.マリックがLIVE出演、右腕TAKUYAほか有名プロマジシャンが出演するマジック公演。グランドプリンスホテル大阪ベイ B.B.S.にて。主催 サンミュージックプロダクション。">
+<meta name="description" content="MAGICIAN’S NIGHT（マジシャンズナイト）。プロマジシャンが多数出演するマジック公演。グランドプリンスホテル大阪ベイ B.B.S.の300インチLEDで、手元の不思議まで大きく。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
@@ -129,11 +129,8 @@ p{margin:0}
 .portrait .empty svg{width:46%;max-width:120px;opacity:.75}
 .portrait .empty span{font-size:11px;letter-spacing:.2em;color:var(--sub)}
 .portrait.noimg img{display:none}
-.portrait img[src$="maric.jpg"]{object-position:50% 0;background:#fff}
-.portrait img[src$="takuya.jpg"]{object-position:42% 20%}
-.face .card-ph img[src$="takuya.jpg"]{object-position:38% 30%}
 .portrait.noimg .empty{display:grid}
-.faces{display:flex;align-items:flex-end;justify-content:center;gap:clamp(20px,5vw,64px);margin-top:34px;animation:fade 1s 2.1s both}
+.faces{display:flex;align-items:center;justify-content:center;gap:clamp(20px,5vw,64px);margin-top:34px;animation:fade 1s 2.1s both}
 .fc{margin:0;display:grid;justify-items:center;gap:12px}
 .oval{border-radius:50%/42%;box-shadow:0 0 0 1px var(--gold),0 0 0 7px rgba(10,10,16,.6),0 0 0 8px rgba(201,164,92,.45),0 20px 50px rgba(0,0,0,.6)}
 .fc-m .oval{width:clamp(110px,14vw,170px);aspect-ratio:4/5}
@@ -170,16 +167,30 @@ html[lang="en"] .head h2{letter-spacing:.08em;padding-left:.08em}
 .lang small{font-size:10px;color:var(--sub);margin:0 4px}
 @media (max-width:480px){.lang{margin-left:0;padding:7px 8px;font-size:11px;letter-spacing:.08em}.nav{gap:8px}}
 
+.portrait .empty .q{font-family:var(--f-deco);font-weight:600;font-size:clamp(44px,6vw,80px);line-height:1;color:var(--gold2);text-shadow:0 0 24px rgba(201,164,92,.55);animation:qpulse 3.2s ease-in-out infinite}
+@keyframes qpulse{50%{opacity:.55;text-shadow:0 0 8px rgba(201,164,92,.3)}}
+.portrait .empty:has(.q) svg{display:none}
+.fc-m .portrait .empty .q{font-size:clamp(32px,4vw,54px)}
+.fc-m{opacity:.75}
+.cast-cap .cast{font-family:var(--f-mincho);font-size:clamp(20px,2.6vw,30px);letter-spacing:.14em;padding-left:.14em}
+.cast-h{font-family:var(--f-mincho);font-weight:600;font-size:clamp(30px,4vw,46px);letter-spacing:.12em;line-height:1.45;margin-top:8px}
+.face .who b{font-size:17px!important;letter-spacing:.16em!important;padding-left:.16em!important}
+.prof h3.cast-h span{display:inline;font:inherit;color:inherit;letter-spacing:inherit;margin:0}
+.cast-cap{display:grid;justify-items:center;gap:2px;margin-top:22px;line-height:1.3;animation:fade 1s 2.3s both}
+.cast-cap .k{font-family:var(--f-deco);font-size:11px;letter-spacing:.45em;padding-left:.45em;color:var(--gold)}
+.cast-cap .r{font-family:var(--f-mincho);font-size:clamp(12px,1.4vw,15px);letter-spacing:.14em;color:var(--gold2);margin-top:4px}
+@media (max-width:560px){.faces{gap:12px}.fc-m .oval{width:84px}.fc-t .oval{width:130px}}
+
 /* ---------- info bar ---------- */
 .bar{position:relative;z-index:2;margin-top:-100px}
-.bar-in{background:rgba(24,24,36,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--rule);display:grid;grid-template-columns:repeat(5,1fr) auto;align-items:center}
+.bar-in{background:rgba(24,24,36,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--rule);display:grid;grid-template-columns:repeat(4,1fr) auto;align-items:center}
 .bar-in div{padding:20px 22px;border-right:1px solid var(--rule);min-width:0}
 .bar dt{font-size:11.5px;color:var(--sub);letter-spacing:.14em}
 .bar dd{margin:2px 0 0;font-family:var(--f-mincho);font-size:16px;font-weight:600;white-space:nowrap}
 .bar dd small{font-size:12px;font-weight:500;color:var(--sub)}
 .bar .btn{margin:0 22px;padding:14px 26px}
 .bar-in dl{display:contents}
-@media (max-width:1000px){.bar-in{grid-template-columns:1fr 1fr}.bar-in div{border-bottom:1px solid var(--rule)}.bar-in div:nth-child(2n){border-right:0}.bar .btn{grid-column:1/-1;margin:18px}.bar-in div:nth-child(5){grid-column:1/-1;border-right:0}}
+@media (max-width:1000px){.bar-in{grid-template-columns:1fr 1fr}.bar-in div{border-bottom:1px solid var(--rule)}.bar-in div:nth-child(2n){border-right:0}.bar .btn{grid-column:1/-1;margin:18px}}
 
 /* ---------- section heading ---------- */
 section{padding-block:110px;position:relative}
@@ -412,12 +423,12 @@ footer{border-top:1px solid var(--rule);padding-block:48px 36px;font-size:12.5px
 }
 </style>
 
-<div class="org"><div class="wrap"><span class="org-l"><b><span class="l-ja">主催</span><span class="l-en">Presented by</span></b><span class="l-ja">株式会社サンミュージックプロダクション</span><span class="l-en">Sun Music Production Co., Ltd.</span></span><span class="org-r notranslate" translate="no"><span class="l-ja">会場　GRAND PRINCE HOTEL OSAKA BAY ／ B.B.S. Event Dining</span><span class="l-en">Venue　GRAND PRINCE HOTEL OSAKA BAY ／ B.B.S. Event Dining</span></span></div></div>
+<div class="org"><div class="wrap"><span class="org-l"><span class="l-ja"><b>会場</b>グランドプリンスホテル大阪ベイ B.B.S.</span><span class="l-en"><b>Venue</b>Grand Prince Hotel Osaka Bay, B.B.S.</span></span><span class="org-r notranslate" translate="no">OSAKA BAY MAGIC SHOW</span></div></div>
 <header class="hd">
   <div class="wrap">
     <a class="mark notranslate" translate="no" href="#top" aria-label="MAGICIAN’S NIGHT トップへ">
       <svg width="30" height="34" viewBox="0 0 30 34" aria-hidden="true"><path d="M15 2C11 9 3 13 3 20a6 6 0 0 0 10.5 4L11 32h8l-2.5-8A6 6 0 0 0 27 20C27 13 19 9 15 2z" fill="#C9A45C"/></svg>
-      <span><b>MAGICIAN’S NIGHT</b><small><span class="l-ja">Mr.マリック presents</span><span class="l-en">Mr. Maric presents</span></small></span>
+      <span><b>MAGICIAN’S NIGHT</b><small><span class="l-ja">大阪ベイ マジックショー</span><span class="l-en">Osaka Bay Magic Show</span></small></span>
     </a>
     <nav class="nav" aria-label="ページ内メニュー">
       <a href="#starring"><span class="l-ja">出演</span><span class="l-en">Cast</span></a>
@@ -444,30 +455,31 @@ footer{border-top:1px solid var(--rule);padding-block:48px 36px;font-size:12.5px
       <div class="pc r"><i>Q<br>♦</i>♦</div>
       <div class="pc back"></div>
     </div>
-    <p class="presents"><span><span class="l-ja">Mr.マリック</span><span class="l-en">Mr. Maric</span></span><em class="notranslate" translate="no">presents</em></p>
+    <p class="presents"><span><span class="l-ja">一夜に集う、マジシャンたち</span><span class="l-en">An evening of magicians</span></span></p>
     <h1><span class="h1-main notranslate" translate="no"><span>MAGICIAN’S</span> <span>NIGHT</span></span><span class="h1-jp"><span class="l-ja">マジシャンズナイト</span><span class="l-en">A Night of Magic on Osaka Bay</span></span></h1>
     <div class="faces">
-      <figure class="fc fc-m"><div class="portrait oval"><img src="img/maric.jpg" alt="Mr.マリック" onerror="this.parentNode.classList.add('noimg')"><div class="empty" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="38" r="17" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M18 96c2-20 15-32 32-32s30 12 32 32" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><span>写真掲載予定</span></div></div><figcaption><span class="k notranslate" translate="no">PRESENTS</span><b><span class="l-ja">Mr.マリック</span><span class="l-en">Mr. Maric</span></b><span class="live"><span class="l-ja">LIVE出演</span><span class="l-en">LIVE</span></span></figcaption></figure>
-      <figure class="fc fc-t"><div class="portrait oval"><img src="img/takuya.jpg" alt="TAKUYA" onerror="this.parentNode.classList.add('noimg')"><div class="empty" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="38" r="17" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M18 96c2-20 15-32 32-32s30 12 32 32" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><span>写真掲載予定</span></div></div><figcaption><span class="k notranslate" translate="no">STARRING</span><b class="notranslate" translate="no">TAKUYA</b><span class="r"><span class="l-ja">Mr.マリックの右腕</span><span class="l-en">Mr. Maric’s right-hand man</span></span><span class="more"><span class="l-ja">ほか 有名プロマジシャン出演</span><span class="l-en">with famous professional magicians</span></span></figcaption></figure>
+      <figure class="fc fc-m"><div class="portrait oval noimg"><div class="empty" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="38" r="17" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M18 96c2-20 15-32 32-32s30 12 32 32" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><b class="q">?</b><span><span class="l-ja">近日発表</span><span class="l-en">Coming soon</span></span></div></div></figure>
+      <figure class="fc fc-t"><div class="portrait oval noimg"><div class="empty" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="38" r="17" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M18 96c2-20 15-32 32-32s30 12 32 32" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><b class="q">?</b><span><span class="l-ja">近日発表</span><span class="l-en">Coming soon</span></span></div></div></figure>
+      <figure class="fc fc-m"><div class="portrait oval noimg"><div class="empty" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="38" r="17" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M18 96c2-20 15-32 32-32s30 12 32 32" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><b class="q">?</b><span><span class="l-ja">近日発表</span><span class="l-en">Coming soon</span></span></div></div></figure>
     </div>
-    <p class="lead"><span class="l-ja">その手元から、<br class="sp">目が離せない。</span><span class="l-en">You won’t be able to<br class="sp"> take your eyes off his hands.</span></p>
+    <div class="cast-cap"><span class="k notranslate" translate="no">STARRING</span><b class="cast"><span class="l-ja">プロマジシャン多数出演</span><span class="l-en">Many professional magicians</span></b><span class="r"><span class="l-ja">出演者は近日発表</span><span class="l-en">Cast to be announced soon</span></span></div>
+    <p class="lead"><span class="l-ja">次々に現れる不思議から、<br class="sp">目が離せない。</span><span class="l-en">One wonder after another —<br class="sp"> you won’t look away.</span></p>
   </div>
 </section>
 
 <div class="bar">
   <div class="wrap">
     <dl class="bar-in">
-      <div><dt><span class="l-ja">主催</span><span class="l-en">Presented by</span></dt><dd><span class="l-ja">サンミュージック</span><span class="l-en">Sun Music</span></dd></div>
-      <div><dt><span class="l-ja">出演</span><span class="l-en">Cast</span></dt><dd>TAKUYA <small><span class="l-ja">ほか</span><span class="l-en">&amp; more</span></small></dd></div>
+      <div><dt><span class="l-ja">出演</span><span class="l-en">Cast</span></dt><dd><span class="l-ja">プロマジシャン多数</span><span class="l-en">Many magicians</span></dd></div>
       <div><dt><span class="l-ja">公演</span><span class="l-en">Show</span></dt><dd><span class="l-ja">2部構成 </span><span class="l-en">2 acts </span><small><span class="l-ja">約60分</span><span class="l-en">60 min</span></small></dd></div>
-      <div><dt><span class="l-ja">LIVE出演</span><span class="l-en">LIVE</span></dt><dd><span class="l-ja">Mr.マリック</span><span class="l-en">Mr. Maric</span></dd></div>
+      <div><dt><span class="l-ja">会場</span><span class="l-en">Venue</span></dt><dd>B.B.S. <small><span class="l-ja">ホテル地下1階</span><span class="l-en">Hotel B1F</span></small></dd></div>
       <div><dt><span class="l-ja">開催日</span><span class="l-en">Dates</span></dt><dd><span class="l-ja">近日発表</span><span class="l-en">Coming soon</span></dd></div>
       <a class="btn" href="#notify"><span class="l-ja">先行案内を受け取る</span><span class="l-en">Get early updates</span></a>
     </dl>
   </div>
 </div>
 
-<!-- STARRING -->
+<!-- CAST -->
 <section id="starring">
   <div class="wrap">
     <div class="head rv"><p class="en notranslate" translate="no">STARRING</p><h2><span class="l-ja">出演</span><span class="l-en">Cast</span></h2><span class="orn" aria-hidden="true">♠</span></div>
@@ -477,55 +489,34 @@ footer{border-top:1px solid var(--rule);padding-block:48px 36px;font-size:12.5px
           <div class="in">
             <div class="back"><span class="notranslate" translate="no">MAGICIAN’S<br>NIGHT</span></div>
             <div class="face">
-              <span class="idx tl notranslate" translate="no">T<i>♥</i></span>
-              <div class="portrait card-ph"><img src="img/takuya.jpg" alt="TAKUYA" onerror="this.parentNode.classList.add('noimg')"><div class="empty" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="38" r="17" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M18 96c2-20 15-32 32-32s30 12 32 32" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><span>写真掲載予定</span></div></div>
+              <span class="idx tl notranslate" translate="no">?<i>♥</i></span>
+              <div class="portrait card-ph noimg"><div class="empty" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="38" r="17" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M18 96c2-20 15-32 32-32s30 12 32 32" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><b class="q">?</b><span><span class="l-ja">近日発表</span><span class="l-en">Coming soon</span></span></div></div>
               <div class="who">
-                <b class="notranslate" translate="no">TAKUYA</b>
-                <small><span class="l-ja">Mr.マリックの右腕</span><span class="l-en">Mr. Maric’s right-hand man</span></small>
+                <b class="notranslate" translate="no">COMING SOON</b>
+                <small><span class="l-ja">出演者は近日発表</span><span class="l-en">Cast to be announced</span></small>
               </div>
-              <span class="idx br notranslate" translate="no">T<i>♥</i></span>
+              <span class="idx br notranslate" translate="no">?<i>♥</i></span>
             </div>
           </div>
         </button>
         <span class="tap"><span class="l-ja">カードをタップしてめくる</span><span class="l-en">Tap the card to flip it</span></span>
       </div>
       <div class="prof rv">
-        <p class="role"><span class="l-ja">Mr.マリックの右腕</span><span class="l-en">Mr. Maric’s right-hand man</span></p>
-        <h3 class="notranslate" translate="no">TAKUYA<span><span class="l-ja">タクヤ</span><span class="l-en">Takuya</span></span></h3>
+        <p class="role"><span class="l-ja">一夜に、何人ものマジシャンが</span><span class="l-en">Not one magician — many</span></p>
+        <h3 class="cast-h"><span class="l-ja">プロマジシャンが<br>多数出演</span><span class="l-en">A night of<br>many magicians</span></h3>
         <div class="body">
-          <p><span class="l-ja">「超魔術」のMr.マリックに弟子入りし、師のそばで技を磨いてきた右腕。「2代目Mr.マリック」を期待される、ミステリーアーティストです。</span><span class="l-en">Apprenticed to Mr. Maric, the legend of “Cho-Majutsu” (super magic), he has honed his craft at his master’s side. A mystery artist tipped to become “the second Mr. Maric.”</span></p>
-          <p><span class="l-ja">MAGICIAN’S NIGHT では、トランプやコインを使ったテーブルマジックを中心に、客席のすぐ前で不思議を起こします。その手元は、会場の大型LEDビジョンにも映し出されます。</span><span class="l-en">At MAGICIAN’S NIGHT he performs table magic with cards and coins right in front of the audience — and his hands are shown live on the venue’s giant LED screen.</span></p>
+          <p><span class="l-ja">MAGICIAN’S NIGHT には、プロのマジシャンが入れ替わりで登場します。ひとりひとり違う持ち味と演目で、最後まで次の不思議が待っています。</span><span class="l-en">At MAGICIAN’S NIGHT, professional magicians take the stage one after another — each with their own style and routines, so there is always another surprise waiting.</span></p>
+          <p><span class="l-ja">トランプやコインを使ったテーブルマジックは、会場の大型LEDビジョンに手元を映し出し、客席のどこからでも楽しめます。</span><span class="l-en">Table magic with cards and coins is shown on the venue’s giant LED screen, so every seat has a close-up view.</span></p>
         </div>
-        <ul class="chips"><li><span class="l-ja">テーブルマジック</span><span class="l-en">Table magic</span></li><li><span class="l-ja">クロースアップ</span><span class="l-en">Close-up</span></li><li><span class="l-ja">2部構成のステージ</span><span class="l-en">Two-act show</span></li></ul>
+        <ul class="chips"><li><span class="l-ja">テーブルマジック</span><span class="l-en">Table magic</span></li><li><span class="l-ja">ステージマジック</span><span class="l-en">Stage magic</span></li><li><span class="l-ja">2部構成のステージ</span><span class="l-en">Two-act show</span></li></ul>
+        <p class="fine"><span class="l-ja">※ 出演者は決まり次第、このページと先行案内でお知らせします。</span><span class="l-en">* Performers will be announced here and by email once confirmed.</span></p>
       </div>
     </div>
-    <div class="guests rv">
-      <div class="gcards notranslate" translate="no" aria-hidden="true"><span>?</span><span>?</span><span>?</span></div>
-      <div>
-        <p class="k notranslate" translate="no">AND MORE</p>
-        <h3><span class="l-ja">ほか、有名プロマジシャンが出演</span><span class="l-en">Plus famous professional magicians</span></h3>
-        <p><span class="l-ja">TAKUYAとともにステージに立つマジシャンは、決まり次第このページと先行案内でお知らせします。</span><span class="l-en">The magicians joining TAKUYA on stage will be announced here and by email as soon as they are confirmed.</span></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LINEAGE -->
-<section class="alt" id="lineage">
-  <div class="wrap">
-    <div class="head rv"><p class="en notranslate" translate="no">PRESENTED BY</p><h2><span class="l-ja">Mr.マリック presents</span><span class="l-en">Mr. Maric presents</span></h2><span class="orn" aria-hidden="true">♦</span>
-      <p class="sub"><span class="l-ja">「ハンドパワー」の一言で日本中を驚かせた「超魔術」のMr.マリックが、LIVE出演。その系譜を受け継ぐ右腕TAKUYAと有名プロマジシャンたちが、大阪ベイエリアのホテルで一夜のステージを開きます。</span><span class="l-en">Mr. Maric — whose “Hand Power” and “Cho-Majutsu” amazed all of Japan — appears LIVE. Together with his right-hand man TAKUYA and famous professional magicians, he brings one special night of magic to a hotel on Osaka Bay.</span></p></div>
-    <div class="lineage">
-      <div class="ln rv"><div class="dot"><div class="portrait circ"><img src="img/maric.jpg" alt="Mr.マリック" onerror="this.parentNode.classList.add('noimg')"><div class="empty" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="38" r="17" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M18 96c2-20 15-32 32-32s30 12 32 32" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><span>写真掲載予定</span></div></div></div><p class="k notranslate" translate="no">MASTER</p><h3><span class="l-ja">Mr.マリック</span><span class="l-en">Mr. Maric</span></h3><p><span class="l-ja">「超魔術」で一世を風靡したマジシャン。本公演に名を冠し、LIVE出演します。</span><span class="l-en">The magician who took Japan by storm with “Cho-Majutsu.” He presents this show and appears LIVE.</span></p></div>
-      <div class="ln rv"><div class="dot"><div class="portrait circ"><img src="img/takuya.jpg" alt="TAKUYA" onerror="this.parentNode.classList.add('noimg')"><div class="empty" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="38" r="17" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M18 96c2-20 15-32 32-32s30 12 32 32" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><span>写真掲載予定</span></div></div></div><p class="k notranslate" translate="no">RIGHT HAND</p><h3>TAKUYA</h3><p><span class="l-ja">「2代目Mr.マリック」を期待される弟子。本公演の主役です。</span><span class="l-en">The apprentice tipped to become “the second Mr. Maric” — and the star of the show.</span></p></div>
-      <div class="ln now rv"><div class="dot" aria-hidden="true">♠</div><p class="k notranslate" translate="no">TONIGHT</p><h3>MAGICIAN’S NIGHT</h3><p><span class="l-ja">グランドプリンスホテル大阪ベイ地下1階、B.B.S.で。</span><span class="l-en">At B.B.S., B1F of Grand Prince Hotel Osaka Bay.</span></p></div>
-    </div>
-    <p class="disclaimer rv"><span class="l-ja">※ Mr.マリックのLIVE出演の内容・時間帯は、販売開始時にご案内します。</span><span class="l-en">* Details and timing of Mr. Maric’s LIVE appearance will be announced when tickets go on sale.</span></p>
   </div>
 </section>
 
 <!-- SHOW -->
-<section id="show">
+<section class="alt" id="show">
   <div class="wrap">
     <div class="head rv"><p class="en notranslate" translate="no">THE SHOW</p><h2><span class="l-ja">公演内容</span><span class="l-en">The Show</span></h2><span class="orn" aria-hidden="true">♣</span>
       <p class="sub"><span class="l-ja">30分のステージを2回。同じお席のまま、第1部・第2部の両方をお楽しみください。</span><span class="l-en">Two 30-minute acts. Enjoy both from the same seat.</span></p></div>
@@ -556,7 +547,7 @@ footer{border-top:1px solid var(--rule);padding-block:48px 36px;font-size:12.5px
 </section>
 
 <!-- TRY -->
-<section class="alt" id="try">
+<section id="try">
   <div class="wrap">
     <div class="head rv"><p class="en notranslate" translate="no">BEFORE THE SHOW</p><h2><span class="l-ja">まずは、ひとつ</span><span class="l-en">Try one first</span></h2><span class="orn" aria-hidden="true">♥</span>
       <p class="sub"><span class="l-ja">開演前のごあいさつに、画面越しの読心術をひとつ。16枚から心の中で選んだ1枚を、4つの質問だけで当ててみせます。</span><span class="l-en">A little mind reading before the show. Think of one card out of sixteen — we’ll name it after just four questions.</span></p></div>
@@ -571,7 +562,7 @@ footer{border-top:1px solid var(--rule);padding-block:48px 36px;font-size:12.5px
 </section>
 
 <!-- PLANS -->
-<section id="plans">
+<section class="alt" id="plans">
   <div class="wrap">
     <div class="head rv"><p class="en notranslate" translate="no">PLANS</p><h2><span class="l-ja">楽しみ方</span><span class="l-en">Plans</span></h2><span class="orn" aria-hidden="true">♠</span>
       <p class="sub"><span class="l-ja">公演だけでも、ベイエリアのクルーズやホテルでのご宿泊と組み合わせても。プランの内容と料金は、開催日の発表とあわせてご案内します。</span><span class="l-en">Enjoy the show on its own, or pair it with a bay cruise or a hotel stay. Plan details and prices will be announced together with the dates.</span></p></div>
@@ -612,7 +603,7 @@ footer{border-top:1px solid var(--rule);padding-block:48px 36px;font-size:12.5px
 </section>
 
 <!-- FLOW -->
-<section class="alt" style="padding-top:90px">
+<section style="padding-top:90px">
   <div class="wrap">
     <div class="head rv"><p class="en notranslate" translate="no">YOUR EVENING</p><h2><span class="l-ja">当日の流れ</span><span class="l-en">Your evening</span></h2><span class="orn" aria-hidden="true">♣</span></div>
     <ol class="flow">
@@ -626,7 +617,7 @@ footer{border-top:1px solid var(--rule);padding-block:48px 36px;font-size:12.5px
 </section>
 
 <!-- VENUE -->
-<section id="venue">
+<section class="alt" id="venue">
   <div class="wrap">
     <div class="head rv"><p class="en notranslate" translate="no">VENUE</p><h2><span class="l-ja">会場のご案内</span><span class="l-en">The Venue</span></h2><span class="orn" aria-hidden="true">♦</span>
       <p class="sub"><span class="l-ja">グランドプリンスホテル大阪ベイ地下1階のイベントダイニング「B.B.S. Event Dining」。かつてのジャズバーの面影を残すバーカウンターと、ステージを囲むLEDビジョン。夜のマジックにふさわしい空間です。</span><span class="l-en">B.B.S. Event Dining, on B1 of Grand Prince Hotel Osaka Bay. A bar counter that keeps the feel of the former jazz bar, and LED screens wrapping the stage — the perfect room for a night of magic.</span></p></div>
@@ -641,21 +632,6 @@ footer{border-top:1px solid var(--rule);padding-block:48px 36px;font-size:12.5px
       <div><b><span class="l-ja">約300インチ</span><span class="l-en">300-inch</span></b><span><span class="l-ja">メインビジョンで手元を大きく</span><span class="l-en">Main screen shows every move</span></span></div>
       <div><b><span class="l-ja">4面 LEDビジョン</span><span class="l-en">4-sided LED</span></b><span><span class="l-ja">ステージを囲む映像演出</span><span class="l-en">Visuals surround the stage</span></span></div>
       <div><b><span class="l-ja">ホテル地下1階</span><span class="l-en">Hotel B1 floor</span></b><span><span class="l-ja">館内なので雨の日も安心</span><span class="l-en">Indoors, rain or shine</span></span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ORGANIZER -->
-<section class="alt" style="padding-block:90px">
-  <div class="wrap">
-    <div class="head rv"><p class="en notranslate" translate="no">ORGANIZER</p><h2><span class="l-ja">主催</span><span class="l-en">Presented by</span></h2></div>
-    <div class="orgbox rv">
-      <div class="seal" aria-hidden="true"><div><b class="notranslate" translate="no">SUN<br>MUSIC</b><small><span class="l-ja">主催</span><span class="l-en">Presented by</span></small></div></div>
-      <div>
-        <h3><span class="l-ja">株式会社サンミュージックプロダクション</span><span class="l-en">Sun Music Production Co., Ltd.</span></h3>
-        <p><span class="l-ja">1968年創業の芸能プロダクション。MAGICIAN’S NIGHT はサンミュージックが主催し、大阪ベイエリアのホテルでお届けするマジック公演です。</span><span class="l-en">A Japanese talent agency founded in 1968. MAGICIAN’S NIGHT is a magic show presented by Sun Music at a hotel on Osaka Bay.</span></p>
-        <a href="https://www.sunmusic-gp.co.jp/" target="_blank" rel="noopener"><span class="l-ja">サンミュージック公式サイト ↗</span><span class="l-en">Sun Music official site ↗</span></a>
-      </div>
     </div>
   </div>
 </section>
@@ -681,8 +657,7 @@ footer{border-top:1px solid var(--rule);padding-block:48px 36px;font-size:12.5px
   <div class="wrap">
     <div class="head rv"><p class="en notranslate" translate="no">FAQ</p><h2><span class="l-ja">よくあるご質問</span><span class="l-en">FAQ</span></h2><span class="orn" aria-hidden="true">♥</span></div>
     <div class="faq-list">
-      <details><summary><span class="l-ja">Mr.マリックさんは出演しますか？</span><span class="l-en">Will Mr. Maric appear?</span></summary><p><span class="l-ja">はい、Mr.マリックがLIVE出演します。出演の内容・時間帯は、販売開始時にご案内します。</span><span class="l-en">Yes, Mr. Maric will appear LIVE. Details and timing will be announced when tickets go on sale.</span></p></details>
-      <details><summary><span class="l-ja">TAKUYAさん以外にも出演者はいますか？</span><span class="l-en">Are there other performers besides TAKUYA?</span></summary><p><span class="l-ja">TAKUYAのほか、有名プロマジシャンの出演を予定しています。出演者は決まり次第、このページと先行案内でお知らせします。</span><span class="l-en">Yes, famous professional magicians will also perform. They will be announced here and by email once confirmed.</span></p></details>
+      <details><summary><span class="l-ja">どんなマジシャンが出演しますか？</span><span class="l-en">Who will perform?</span></summary><p><span class="l-ja">複数のプロマジシャンが出演します。出演者は決まり次第、このページと先行案内でお知らせします。</span><span class="l-en">Several professional magicians will perform. The cast will be announced here and by email once confirmed.</span></p></details>
       <details><summary><span class="l-ja">開催日・開演時刻はいつ決まりますか？</span><span class="l-en">When will the dates and times be announced?</span></summary><p><span class="l-ja">開催日と開演時刻は、チケット販売の開始にあわせて発表します。先行案内にご登録いただくと、一般公開より先にお知らせします。</span><span class="l-en">Dates and show times will be announced when tickets go on sale. Subscribers to our updates will hear first.</span></p></details>
       <details><summary><span class="l-ja">第1部と第2部は別々に買うのですか？</span><span class="l-en">Do I need separate tickets for Act I and Act II?</span></summary><p><span class="l-ja">いいえ。1枚のチケットで、同じお席のまま第1部・第2部の両方をご覧いただけます。</span><span class="l-en">No. One ticket covers both acts, from the same seat.</span></p></details>
       <details><summary><span class="l-ja">ホテルに宿泊しなくても参加できますか？</span><span class="l-en">Can I attend without staying at the hotel?</span></summary><p><span class="l-ja">はい。ご宿泊の有無にかかわらず、チケットをお持ちの方はどなたでもご参加いただけます。</span><span class="l-en">Yes. Anyone with a ticket is welcome, whether or not they are staying at the hotel.</span></p></details>
@@ -735,17 +710,15 @@ footer{border-top:1px solid var(--rule);padding-block:48px 36px;font-size:12.5px
     <div class="ft">
       <a class="mark notranslate" translate="no" href="#top" aria-label="トップへ">
         <svg width="30" height="34" viewBox="0 0 30 34" aria-hidden="true"><path d="M15 2C11 9 3 13 3 20a6 6 0 0 0 10.5 4L11 32h8l-2.5-8A6 6 0 0 0 27 20C27 13 19 9 15 2z" fill="#C9A45C"/></svg>
-        <span><b>MAGICIAN’S NIGHT</b><small><span class="l-ja">Mr.マリック presents</span><span class="l-en">Mr. Maric presents</span></small></span>
+        <span><b>MAGICIAN’S NIGHT</b><small><span class="l-ja">大阪ベイ マジックショー</span><span class="l-en">Osaka Bay Magic Show</span></small></span>
       </a>
       <dl>
-        <dt><span class="l-ja">主催</span><span class="l-en">Presented by</span></dt><dd class="big"><span class="l-ja">株式会社サンミュージックプロダクション</span><span class="l-en">Sun Music Production Co., Ltd.</span></dd>
-        <dt><span class="l-ja">出演</span><span class="l-en">Cast</span></dt><dd><span class="l-ja">TAKUYA ほか 有名プロマジシャン</span><span class="l-en">TAKUYA &amp; famous professional magicians</span></dd>
-        <dt><span class="l-ja">LIVE出演</span><span class="l-en">LIVE</span></dt><dd><span class="l-ja">Mr.マリック</span><span class="l-en">Mr. Maric</span></dd>
+        <dt><span class="l-ja">出演</span><span class="l-en">Cast</span></dt><dd><span class="l-ja">プロマジシャン多数（近日発表）</span><span class="l-en">Professional magicians (to be announced)</span></dd>
         <dt><span class="l-ja">会場</span><span class="l-en">Venue</span></dt><dd><span class="l-ja">グランドプリンスホテル大阪ベイ B.B.S. Event Dining</span><span class="l-en">Grand Prince Hotel Osaka Bay, B.B.S. Event Dining</span></dd>
         <dt><span class="l-ja">クルーズ運航</span><span class="l-en">Cruise operator</span></dt><dd><span class="l-ja">株式会社ユニバーサルクルーズ</span><span class="l-en">Universal Cruise Co., Ltd.</span></dd>
       </dl>
     </div>
-    <p class="copy notranslate" translate="no">© 2026 SUN MUSIC PRODUCTION / MAGICIAN’S NIGHT</p>
+    <p class="copy notranslate" translate="no">© 2026 MAGICIAN’S NIGHT</p>
   </div>
 </footer>
 
